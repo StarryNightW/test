@@ -22,12 +22,18 @@ public class JdbcUtil {
 	 private static String password;
 	 static{
 		 try{
+			 //InputStream in = JdbcUtil.class.getClassLoader().getResourceAsStream("C:/isi/eclipse/test/config.properties");
 			 InputStream in = JdbcUtil.class.getClassLoader().getResourceAsStream("config.properties");
 			 Properties props = new Properties();
+			 props.load(in);
 			 driverClass = props.getProperty("driverClass");
+			 System.out.println(driverClass);
 			 url = props.getProperty("url");
+			 System.out.println(url);
 			 user = props.getProperty("user");
+			 System.out.println(user);
 			 password = props.getProperty("password");
+			 System.out.println(password);
 			 in.close();
 		 } catch(IOException e){
 			 throw new ExceptionInInitializerError("获取数据库配置文件信息失败");
