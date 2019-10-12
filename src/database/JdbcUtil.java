@@ -27,13 +27,13 @@ public class JdbcUtil {
 			 Properties props = new Properties();
 			 props.load(in);
 			 driverClass = props.getProperty("driverClass");
-			 System.out.println(driverClass);
+			 //System.out.println(driverClass);
 			 url = props.getProperty("url");
-			 System.out.println(url);
+			 //System.out.println(url);
 			 user = props.getProperty("user");
-			 System.out.println(user);
+			// System.out.println(user);
 			 password = props.getProperty("password");
-			 System.out.println(password);
+			// System.out.println(password);
 			 in.close();
 		 } catch(IOException e){
 			 throw new ExceptionInInitializerError("获取数据库配置文件信息失败");
@@ -82,6 +82,17 @@ public class JdbcUtil {
 			 }
 			 conn = null;
 			 
+		 }
+	 }
+	 
+	 public static void closeConn(Connection conn){
+		 if(null != conn){
+			 try{
+				 conn.close();
+			 }catch(SQLException e){
+				 System.out.println("关闭连接失败！");
+				 e.printStackTrace();
+			 }
 		 }
 	 }
 }
